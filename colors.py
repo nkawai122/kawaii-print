@@ -42,12 +42,18 @@ class Cprint:
     def __init__(
         self,
         msg: str | None,
-        color: IColor = Color,
         options: dict | None = None,
+        color: IColor = Color,
     ):
         self.__msg: str | None = None
-        if options:
+        if isinstance(options, dict):
+            print(options)
             self.options = options
+            self.__msg = color.set_color(
+                text=msg,
+                font_weight=options["font_weight"],
+                color_code=options["color_code"],
+            )
         else:
             self.options = {"font_weight": "bold", "color_code": "green"}
             self.__msg = color.set_color(text=msg, **self.options)
@@ -64,13 +70,13 @@ class Cprint:
         else:
             self.__msg = msg
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.msg
 
 
 def decocolor(func):
-    def wrapper(msg: str):
-        colored_result = Cprint(func(msg))
+    def wrapper(msg: str, **kwords):
+        colored_result = Cprint(func(msg), **kwords)
         return colored_result, print(colored_result)
 
     return wrapper
@@ -87,5 +93,6 @@ if __name__ == "__main__":
         text=text, font_weight="bold", color_code="green"
     )
     print(colored_text)
-    print(Cprint(text))
+    options = {"font_weight": "bold", "color_code": "red"}
+    print(Cprint(text, options=options))
     paint(text)
