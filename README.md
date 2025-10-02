@@ -4,7 +4,7 @@
 
 #### シンプルな呼び出し方法
 ```python
-from colors import paint
+from kawaii_colors import paint
 
 text = "Python3 is Beatiful."
 paint(text)
@@ -13,7 +13,7 @@ paint(text)
 
 #### カスタマイズして呼び出す方法
 ```python
-frmo colors import Cprint
+from kawaii_colors import Cprint
 
 text = "Python3 is Beatiful."
 options = {"font_weight": "bold", "color_code": "red"}
