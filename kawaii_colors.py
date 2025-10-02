@@ -12,7 +12,7 @@ class Color(IColor):
     @staticmethod
     def set_color(text: str, font_weight: str, color_code: str) -> str:
         colors = {
-            "bold": "\033[30m",
+            "gray": "\033[30m",
             "blue": "\033[34m",
             "cyan": "\033[36m",
             "green": "\033[32m",
@@ -82,12 +82,12 @@ def decocolor(func):
 
 
 @decocolor
-def paint(text: str):
+def paint(text: str, kwords=None):
     return text
 
 
 if __name__ == "__main__":
     text = "Python3 is Beautiful."
-    options = {"font_weight": "bold", "color_code": "red"}
+    options = {"font_weight": "italics", "color_code": "gray"}
     print(Cprint(text, options=options))
     paint(text)
