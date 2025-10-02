@@ -74,7 +74,7 @@ class Cprint:
 
 
 def decocolor(func):
-    def wrapper(msg: str, kwords):
+    def wrapper(msg: str, kwords=None):
         colored_result = Cprint(func(msg), kwords)
         return colored_result, print(colored_result)
 
@@ -88,10 +88,6 @@ def paint(text: str):
 
 if __name__ == "__main__":
     text = "Python3 is Beautiful."
-    colored_text = Color.set_color(
-        text=text, font_weight="bold", color_code="green"
-    )
-    print(colored_text)
     options = {"font_weight": "bold", "color_code": "red"}
     print(Cprint(text, options=options))
-    paint(text, options)
+    paint(text)
