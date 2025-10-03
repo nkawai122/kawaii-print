@@ -88,6 +88,24 @@ def paint(text: str, kwords=None):
 
 if __name__ == "__main__":
     text = "Python3 is Beautiful."
-    options = {"font_weight": "italics", "color_code": "gray"}
-    print(Cprint(text, options=options))
-    paint(text)
+    colors = [
+        "gray",
+        "blue",
+        "cyan",
+        "green",
+        "purple",
+        "red",
+        "white",
+        "yellow",
+    ]
+    weights = [
+        "bold",
+        "bold_res",
+        "italics",
+        "italics_res",
+        "underline",
+        "underline_res",
+    ]
+    for c in colors:
+        for w in weights:
+            paint(text, {"font_weight": w, "color_code": c})
